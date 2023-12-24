@@ -11,7 +11,6 @@ class BooksRepository {
 	getBooks = async (callback) => {
 		this.programmersModel.subscribe(callback);
 		await this.loadApiData();
-		this.programmersModel.notify();
 	};
 
 	loadApiData = async () => {
@@ -24,13 +23,11 @@ class BooksRepository {
 	addBook = async (payload) => {
 		await this.gateway.post("/books", payload);
 		await this.loadApiData();
-		this.programmersModel.notify();
 	};
 
 	reset = async () => {
 		await this.gateway.get("/reset");
 		await this.loadApiData();
-		this.programmersModel.notify();
 	};
 }
 

@@ -8,6 +8,7 @@ export default class Observable {
 
 	set value(newValue) {
 		this._value = newValue;
+		this.notify();
 	}
 
 	get value() {
