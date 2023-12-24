@@ -1,27 +1,8 @@
-## Exercise
+# React + Vite
 
-## Execution
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-#
+Currently, two official plugins are available:
 
-### Challenge
-
-#### Display the list of books using the
-
-#### observable
-
-#
-
-### Power-up
-
-#### Add two buttons to the screen which will
-
-#### let you add a hardcoded book and then
-
-#### reset the books. The list will update
-
-#### automatically using the observable
-
-#### pattern.
-
-#
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
