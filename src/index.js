@@ -3,33 +3,26 @@ import ReactDOM from "react-dom";
 import BooksPresenter from "./Books/BooksPresenter.js";
 
 function App() {
-	const booksPresenter = new BooksPresenter();
-	const [vm, copyVmToComponentState] = useState([]);
+  const booksPresenter = new BooksPresenter();
+  const [vm, copyVmToComponentState] = useState([]);
 
-	React.useEffect(() => {
-		async function load() {
-			await booksPresenter.load((generatedViewModel) => {
-				copyVmToComponentState(generatedViewModel);
-			});
-		}
-		load();
-	}, []);
+  React.useEffect(() => {
+    async function load() {
+      await booksPresenter.load((viewModel) => {
+        copyVmToComponentState(viewModel);
+      });
+    }
+    load();
+  }, []);
 
-	return (
-		<div>
-			{vm.map((bookVm, i) => {
-				return <div key={i}>{bookVm.name}</div>;
-			})}
-			<button
-				onClick={() => {
-					booksPresenter.addBook({ name: "Test", author: "nitish" });
-				}}
-			>
-				add book
-			</button>
-			<button onClick={() => booksPresenter.reset()}>reset book</button>
-		</div>
-	);
+  return (
+    <div>
+      <h2>Books</h2>
+      {vm.map((book, i) => {
+        return <div key={i}>{book.name}</div>;
+      })}
+    </div>
+  );
 }
 
 const rootElement = document.getElementById("root");

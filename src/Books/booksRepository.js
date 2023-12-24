@@ -1,36 +1,26 @@
 import HttpGateway from "../Shared/HttpGateway.js";
-import Observable from "../Shared/Observable.js";
+import Observable from "../Shared/Observable";
+
 class BooksRepository {
-	gateway = null;
-	programmersModel = new Observable([]);
+  programmersModel = null;
 
-	constructor() {
-		this.gateway = new HttpGateway();
-	}
+  constructor() {
+    this.programmersModel = new Observable([]);
+    this.gateway = new HttpGateway();
+  }
 
-	getBooks = async (callback) => {
-		this.programmersModel.subscribe(callback);
-		await this.loadApiData();
-	};
+  getBooks = async (callback) => {
+    this.programmersModel.subscribe(callback);
+    await this.loadApiData();
+  };
 
-	loadApiData = async () => {
-		const booksDto = await this.gateway.get("/books");
-		this.programmersModel.value = booksDto.result.map((bookDto) => {
-			return bookDto;
-		});
-	};
-
-	addBook = async (payload) => {
-		await this.gateway.post("/books", payload);
-		await this.loadApiData();
-	};
-
-	reset = async () => {
-		await this.gateway.get("/reset");
-		await this.loadApiData();
-	};
+  loadApiData = async () => {
+    const booksDto = await this.gateway.get("/books");
+    this.programmersModel.value = booksDto.result.map((bookDto) => {
+      return bookDto;
+    });
+  };
 }
 
 const booksRepository = new BooksRepository();
-
 export default booksRepository;

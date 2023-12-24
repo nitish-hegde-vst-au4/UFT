@@ -1,25 +1,27 @@
 export default class Observable {
-	_value = null;
-	observers = [];
+  _value = null;
+  observers = [];
 
-	constructor(value) {
-		this._value = value;
-	}
+  constructor(initialValue) {
+    this._value = initialValue;
+  }
 
-	set value(newValue) {
-		this._value = newValue;
-		this.notify();
-	}
+  set value(newValue) {
+    this._value = newValue;
+    this.notify();
+  }
 
-	get value() {
-		return this._value;
-	}
+  get value() {
+    return this._value;
+  }
 
-	subscribe(callback) {
-		this.observers.push(callback);
-	}
+  subscribe = (func) => {
+    this.observers.push(func);
+  };
 
-	notify() {
-		this.observers.forEach((observer) => observer(this._value));
-	}
+  notify = () => {
+    this.observers.forEach((observer) => {
+      observer(this._value);
+    });
+  };
 }
