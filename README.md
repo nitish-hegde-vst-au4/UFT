@@ -1,25 +1,27 @@
 ## Exercise
 
-## Fast-test Architecture
+## Execution
 
 #
 
 ### Challenge
 
-#### Create a component using the Fast-test
+#### Display the list of books using the
 
-#### architecture to display a list of books
-
-#### from the books API.
+#### observable
 
 #
 
 ### Power-up
 
-#### Using the Fast-test architecture add a
+#### Add two buttons to the screen which will
 
-#### button that let’s you add a hardcoded
+#### let you add a hardcoded book and then
 
-#### book to the books API when the user
+#### reset the books. The list will update
 
-#### clicks it.
+#### automatically using the observable
+
+#### pattern.
+
+#
