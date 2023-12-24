@@ -7,4 +7,12 @@ export default class BooksPresenter {
 			callback(booksVm);
 		});
 	};
+
+	addBook = (input) => {
+		booksRepository.addBook({ name: input.name, author: input.author });
+	};
+
+	reset = () => {
+		booksRepository.reset();
+	};
 }

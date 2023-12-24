@@ -20,6 +20,18 @@ class BooksRepository {
 			return bookDto;
 		});
 	};
+
+	addBook = async (payload) => {
+		await this.gateway.post("/books", payload);
+		await this.loadApiData();
+		this.programmersModel.notify();
+	};
+
+	reset = async () => {
+		await this.gateway.get("/reset");
+		await this.loadApiData();
+		this.programmersModel.notify();
+	};
 }
 
 const booksRepository = new BooksRepository();

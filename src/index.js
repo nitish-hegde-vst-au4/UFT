@@ -20,6 +20,14 @@ function App() {
 			{vm.map((bookVm, i) => {
 				return <div key={i}>{bookVm.name}</div>;
 			})}
+			<button
+				onClick={() => {
+					booksPresenter.addBook({ name: "Test", author: "nitish" });
+				}}
+			>
+				add book
+			</button>
+			<button onClick={() => booksPresenter.reset()}>reset book</button>
 		</div>
 	);
 }
