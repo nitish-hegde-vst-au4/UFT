@@ -1,4 +1,4 @@
-import HttpGateway from "../Shared/HttpGateway.js";
+import HttpGateway from "../Shared/HttpGateway";
 import Observable from "../Shared/Observable";
 
 class BooksRepository {
@@ -19,6 +19,18 @@ class BooksRepository {
 		this.programmersModel.value = booksDto.result.map((bookDto) => {
 			return bookDto;
 		});
+	};
+
+	addBook = async (bookPm) => {
+		const bookDto = { name: bookPm.name, author: bookPm.author };
+		await this.gateway.post("/books", bookDto);
+		await this.loadApiData();
+	};
+
+	deleteBook = async (bookId) => {
+		const bookDto = bookId;
+		await this.gateway.delete("/books", bookDto);
+		await this.loadApiData();
 	};
 }
 
